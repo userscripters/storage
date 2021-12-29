@@ -1,5 +1,5 @@
 {
-    "name": "@userscripters/store",
+    "name": "@userscripters/storage",
     "description": "Userscript manager-agnostic storage",
     "keywords": [
         "userscripts",
@@ -21,12 +21,12 @@
     "contributors": [],
     "repository": {
         "type": "git",
-        "url": "https://github.com/userscripters/store.git"
+        "url": "https://github.com/userscripters/storage.git"
     },
     "bugs": {
-        "url": "https://github.com/userscripters/store/issues"
+        "url": "https://github.com/userscripters/storage/issues"
     },
-    "homepage": "https://github.com/userscripters/store#readme",
+    "homepage": "https://github.com/userscripters/storage#readme",
     "license": "GPL-3.0-or-later",
     "devDependencies": {
         "@types/chai": "^4.3.0",
