@@ -1,0 +1,9 @@
+{
+    "extends": "../tsconfig.json",
+    "compilerOptions": {
+        "types": ["mocha","chai","chai-as-promised","tampermonkey","greasemonkey"],
+        "module": "es2022"
+    },
+    "include": ["."],
+    "exclude": ["src"]
+}

@@ -1,0 +1,18 @@
+{
+    "compilerOptions": {
+        "strict": true,
+        "noUnusedLocals": true,
+        "noUnusedParameters": true,
+        "skipLibCheck": true,
+        "esModuleInterop": true,
+        "noErrorTruncation": true,
+        "declaration": true,
+        "outDir": "dist",
+        "target": "es2019",
+        "module": "CommonJS",
+        "lib": ["ES2019", "DOM", "DOM.Iterable"],
+        "types": ["tampermonkey", "greasemonkey"]
+    },
+    "include": ["src"],
+    "exclude": ["test", "dist", "node_modules"]
+}
