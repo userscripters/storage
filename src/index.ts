@@ -1,8 +1,10 @@
 /// <reference types="greasemonkey" />
 
-import type { AsyncStorage } from "./storages.js";
+import { type AsyncStorage } from "./storages.js";
 
+export * from "./locator.js";
 export * from "./storages.js";
+
 
 export default class Store {
 
