@@ -42,6 +42,7 @@
         "cross-env": "^7.0.3",
         "jsdom": "^19.0.0",
         "mocha": "^9.1.3",
+        "node-domexception": "^1.0.0",
         "sinon": "^12.0.1",
         "tinyify": "^3.0.0",
         "ts-node": "^10.4.0",
