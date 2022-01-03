@@ -3,20 +3,26 @@
 
 import { expect } from "chai";
 import { JSDOM } from "jsdom";
+import "node-domexception";
 import { stub } from "sinon";
+import { NoStorageError } from "../../src/errors.js";
 import { canWriteToStorage, locateStorage } from "../../src/locator.js";
 import { GreasemonkeyStorage, TampermonkeyStorage } from "../../src/storages.js";
-import "node-domexception";
 
 describe(locateStorage.name, () => {
+    const { window: { localStorage, sessionStorage, Storage } } = new JSDOM(void 0, { url: "https://localhost" });
 
     // working around https://github.com/sinonjs/sinon/issues/2195
-    before(() => Object.defineProperty(globalThis, "GM", {
-        value: {},
-        writable: true,
-        enumerable: true
+    beforeEach(() => {
+        Object.defineProperty(globalThis, "GM", { value: { info: {} }, writable: true, enumerable: true });
+        Object.assign(globalThis, { localStorage, sessionStorage });
+    });
+
+    afterEach(() => Object.assign(globalThis, {
+        GM: void 0,
+        localStorage: void 0,
+        sessionStorage: void 0
     }));
-    after(() => Object.assign(globalThis, { GM: void 0 }));
 
     it('should choose userscript manager storage if found', () => {
 
@@ -33,6 +39,16 @@ describe(locateStorage.name, () => {
 
             expect(storage).to.be.instanceOf(constructor);
         });
+    });
+
+    it('should choose one of the default storages if none found', () => {
+        const storage = locateStorage();
+        expect(storage).to.be.instanceOf(Storage);
+    });
+
+    it('should throw NoStorageError if no storages found', () => {
+        Object.assign(globalThis, { localStorage: void 0, sessionStorage: void 0 });
+        expect(() => locateStorage()).to.throw(NoStorageError);
     });
 });
 
